@@ -25,10 +25,34 @@ chmod 777 /str
 chmod +t /str
 #
 #2 按需求配置vsftpd服务器并截图: （15分）
+#apt install vsftpd
 #2.1 单独建立一个匿名用户可写的公共目录 并保留pub只读目录
+cat << EOF |sudo tee /etc/vsftpd.conf 1>/dev/null
+listen=YES
+write_enable=YES
+anonymous_enable=YES
+anon_root=/var/ftp/
+anon_mkdir_write_enable=YES
+anon_upload_enable=YES
+local_enable=NO
+use_localtime=YES
+xferlog_enable=YES
+connect_from_port_20=YES
+secure_chroot_dir=/var/run/vsftpd/empty
+pam_service_name=vsftpd
+ssl_enable=NO
+utf8_filesystem=YES
+EOF
+sudo rm /var/ftp -r
+sudo mkdir /var/ftp/pub -R
+sudo mkdir /var/ftp/exam
+sudo chown nobody:nogroup /var/ftp -R
+sudo chown ftp:ftp /var/ftp/pub /var/ftp/exam
 #2.2 拒绝c用户登录ftp
+cat /etc/vsftpd.conf|sed -E 's/(^.*local_enable=)/#\1/'|sudo tee /etc/vsftpd.conf 1>/dev/null
+echo "local_enable=NO"|sudo tee /etc/vsftpd.conf 1>dev/null
 #2.3 描述ftp主被工作模式的区别
-#
+# https://www.google.com
 #3 按需配置dns服务器 （20分）
 #3.1 分别配置student.com study.com两个域名解析同一ip地址 写出配置步骤并截图
 #3.2 搭建辅助dns服务器 写出配置步骤并截图
