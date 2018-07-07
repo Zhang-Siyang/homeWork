@@ -61,6 +61,17 @@ echo "local_enable=NO"|sudo tee /etc/vsftpd.conf 1>dev/null
 #
 #4 实现LAMP web服务器，写出配置步骤并截图。（30分）
 #4.1 在apache上为www.student.com www.study.com两个域名实现基于名字的虚拟主机。
+# 1. 在 /etc/apache2/site-enable/ 新建对应 conf 文件，内容大致如下:
+cat << EOF
+<VirtualHost *:80>
+    ServerName www.student.com
+    DocumentRoot /var/www/student
+</VirtualHost>
+EOF
+echo "解析过来就可以"
 #4.2 发布iwebshop 与discuz两个动态网站。
+echo "解包"
 #4.3 为iwebshop站点 配置基于用户名密码的访问控制(basic)。
+echo "啥啥啥？"
 #4.4 为discuz站点配置一个虚拟目录 名称自定义。
+echo "没看懂"
