@@ -44,7 +44,7 @@ ssl_enable=NO
 utf8_filesystem=YES
 EOF
 sudo rm /var/ftp -r
-sudo mkdir /var/ftp/pub -R
+sudo mkdir /var/ftp/pub -p
 sudo mkdir /var/ftp/exam
 sudo chown nobody:nogroup /var/ftp -R
 sudo chown ftp:ftp /var/ftp/pub /var/ftp/exam
@@ -57,7 +57,7 @@ echo "local_enable=NO"|sudo tee /etc/vsftpd.conf 1>dev/null
 #3.1 分别配置student.com study.com两个域名解析同一ip地址 写出配置步骤并截图
 # https://github.com/bronze1man/it-summary/blob/master/dns/bind9/%E6%B7%BB%E5%8A%A0%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E8%AE%B0%E5%BD%95.md
 #3.2 搭建辅助dns服务器 写出配置步骤并截图
-# 没看懂题，写不了
+echo "没看懂题……"
 #
 #4 实现LAMP web服务器，写出配置步骤并截图。（30分）
 #4.1 在apache上为www.student.com www.study.com两个域名实现基于名字的虚拟主机。
